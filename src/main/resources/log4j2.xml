@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <!-- Appender для вывода логов в консоль -->
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-        <!-- Appender для сохранения логов в файл -->
-        <File name="File" fileName="logs/application.log" append="true">
+        <File name="File" fileName="C:\Users\User\EPAM\TaskArray\data\application.log" append="true">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>

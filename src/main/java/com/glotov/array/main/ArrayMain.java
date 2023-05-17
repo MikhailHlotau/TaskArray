@@ -41,8 +41,5 @@ public class ArrayMain {
         } catch (CustomException e) {
             System.err.println(e);
         }
-
-        String javaVersion = System.getProperty("java.version");
-        System.out.println("Java version: " + javaVersion);
     }
 }

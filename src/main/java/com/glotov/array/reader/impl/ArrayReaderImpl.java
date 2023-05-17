@@ -11,15 +11,18 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ArrayReaderImpl implements ArrayReader {
 
-    private static final String DEFAULT_FILENAME = "data\\arrays.txt";
+    private static final Logger logger = LogManager.getLogger(ArrayReaderImpl.class);
     private static final String SPACE_DELIMITER = "\\s+";
 
     public ArrayList<int[]> readArrayAll(String filename) throws CustomException {
         Path path = Paths.get(filename);
         if (!Files.exists(path)) {
+            logger.error("File " + filename + " does not exist");
             throw new CustomException("File " + filename + " does not exist");
         }
         ArrayList<int[]> matrix = new ArrayList<>();
@@ -36,19 +39,11 @@ public class ArrayReaderImpl implements ArrayReader {
                     matrix.add(row);
                 }
             }
-            for (int[] row : matrix) {
-                System.out.println(Arrays.toString(row));
-            }
         } catch (IOException e) {
+            logger.error("Error reading file: " + filename, e);
             throw new CustomException(e);
         }
         return matrix;
     }
-
-    @Override
-    public String toString() {
-        return "ArrayReaderImpl{}";
-    }
-
 }
 
